@@ -4,7 +4,7 @@ import Home from './src/screens/Home/Home';
 import MenuItem from './src/screens/MenuItem/MenuItem';
 
 const App = () => {
-  return <Details />;
+  return <MenuItem />;
 };
 
 export default App;

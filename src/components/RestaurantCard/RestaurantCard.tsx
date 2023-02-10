@@ -1,6 +1,6 @@
-import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
-
+import React, {useState} from 'react';
+import {View, Text, Image, StyleSheet, Pressable} from 'react-native';
+import Icon from 'react-native-vector-icons/AntDesign';
 interface RestaurantCardProps {
   props: {
     id: string;
@@ -14,6 +14,7 @@ interface RestaurantCardProps {
 }
 
 function RestaurantCard({props}: RestaurantCardProps) {
+  const [isFavourite, setIsFavourite] = useState(false);
   return (
     <View>
       <View style={styles.restaurantCard}>
@@ -23,7 +24,17 @@ function RestaurantCard({props}: RestaurantCardProps) {
           }}
           style={styles.restaurantImage}
         />
-
+        <Pressable
+          style={{position: 'absolute', top: 10, right: 10}}
+          onPress={() => {
+            setIsFavourite(!isFavourite);
+          }}>
+          {isFavourite ? (
+            <Icon name="heart" size={30} color="white" />
+          ) : (
+            <Icon name="hearto" size={30} color="white" />
+          )}
+        </Pressable>
         <View style={styles.cardFooter}>
           <View style={styles.details}>
             <Text style={styles.restaurantName}>{props.name}</Text>
@@ -52,6 +63,7 @@ const styles = StyleSheet.create({
       width: 0,
       height: 1,
     },
+    position: 'relative',
     shadowOpacity: 0.18,
     shadowRadius: 1.0,
     elevation: 1,

@@ -2,7 +2,7 @@ import React from 'react';
 import {StyleSheet, Text, View, Image, FlatList} from 'react-native';
 import ListHeader from '../../components/ListHeader/ListHeader';
 import data from '../../../data/restaurants.json';
-
+import Icon from 'react-native-vector-icons/FontAwesome5';
 const dishes = data[0].dishes;
 
 export default function Details() {
@@ -18,6 +18,12 @@ export default function Details() {
             <Text style={styles.itemPrice}>$ {item.price}</Text>
           </View>
         )}
+      />
+      <Icon
+        style={styles.back}
+        name="arrow-circle-left"
+        size={30}
+        color="white"
       />
     </View>
   );
@@ -53,5 +59,10 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
     color: 'black',
+  },
+  back: {
+    position: 'absolute',
+    top: 20,
+    left: 20,
   },
 });

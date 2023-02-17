@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {View, Text, Image, StyleSheet, Pressable} from 'react-native';
 import Icon from 'react-native-vector-icons/AntDesign';
+import {useNavigation} from '@react-navigation/native';
 interface RestaurantCardProps {
   props: {
     id: string;
@@ -14,9 +15,10 @@ interface RestaurantCardProps {
 }
 
 function RestaurantCard({props}: RestaurantCardProps) {
+  const navigation = useNavigation();
   const [isFavourite, setIsFavourite] = useState(false);
   return (
-    <View>
+    <Pressable onPress={() => navigation.navigate('RestaurantDetails')}>
       <View style={styles.restaurantCard}>
         <Image
           source={{
@@ -48,7 +50,7 @@ function RestaurantCard({props}: RestaurantCardProps) {
           </View>
         </View>
       </View>
-    </View>
+    </Pressable>
   );
 }
 

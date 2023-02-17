@@ -1,8 +1,10 @@
 import {TouchableOpacity, Text, View} from 'react-native';
 import React from 'react';
 import Icon from 'react-native-vector-icons/Feather';
+import {useNavigation} from '@react-navigation/native';
 
 const Cart = () => {
+  const navigation = useNavigation();
   return (
     <View
       style={{
@@ -10,7 +12,9 @@ const Cart = () => {
         backgroundColor: 'white',
         padding: 20,
       }}>
-      <Icon name="arrow-left" size={30} color="black" />
+      <TouchableOpacity onPress={() => navigation.goBack()}>
+        <Icon name="arrow-left" size={30} color="black" />
+      </TouchableOpacity>
       <Text
         style={{
           fontSize: 30,
@@ -139,6 +143,9 @@ const Cart = () => {
             flexDirection: 'row',
             alignItems: 'center',
             columnGap: 10,
+          }}
+          onPress={() => {
+            navigation.navigate('OrderDetails');
           }}>
           <Text
             style={{

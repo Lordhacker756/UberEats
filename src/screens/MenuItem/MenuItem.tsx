@@ -9,17 +9,21 @@ import React, {useState} from 'react';
 import Icon from 'react-native-vector-icons/Feather';
 import Btn from 'react-native-vector-icons/AntDesign';
 import Cart from 'react-native-vector-icons/Entypo';
+import {useNavigation} from '@react-navigation/native';
 
 const MenuItem = () => {
+  const navigation = useNavigation();
   const [amount, setAmount] = useState(1);
   return (
     <View style={styles.mainContainer}>
-      <Icon
-        style={styles.backArrow}
-        name="arrow-left"
-        size={30}
-        color="black"
-      />
+      <Pressable onPress={() => navigation.goBack()}>
+        <Icon
+          style={styles.backArrow}
+          name="arrow-left"
+          size={30}
+          color="black"
+        />
+      </Pressable>
       <Text style={styles.heading}>Carolina Honey</Text>
       <Text style={styles.description}>
         Our famous ribs marinatead iwth our Carolina honey sauce, a mixture of
@@ -44,7 +48,9 @@ const MenuItem = () => {
         </Pressable>
       </View>
       <View style={styles.cartContainer}>
-        <TouchableOpacity style={styles.addToCart}>
+        <TouchableOpacity
+          style={styles.addToCart}
+          onPress={() => navigation.navigate('Cart')}>
           <Text style={styles.addToCartText}>Add to Cart</Text>
           <Cart name="shopping-cart" size={25} color="white" />
         </TouchableOpacity>

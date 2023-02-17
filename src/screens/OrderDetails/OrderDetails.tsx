@@ -1,12 +1,14 @@
 import React from 'react';
-import {StyleSheet, Text, View, FlatList} from 'react-native';
+import {StyleSheet, Text, View, FlatList, Pressable} from 'react-native';
 
 import data from '../../../data/restaurants.json';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import OrdersHeader from '../../components/ListHeader/OrdersHeader';
+import {useNavigation} from '@react-navigation/native';
 const dishes = data[0].dishes;
 
 export default function OrderDetails() {
+  const navigation = useNavigation();
   return (
     <View style={styles.pageContainer}>
       <FlatList
@@ -28,12 +30,11 @@ export default function OrderDetails() {
           </View>
         )}
       />
-      <Icon
+      <Pressable
         style={styles.back}
-        name="arrow-circle-left"
-        size={30}
-        color="white"
-      />
+        onPress={() => navigation.navigate('Home')}>
+        <Icon name="arrow-circle-left" size={30} color="white" />
+      </Pressable>
     </View>
   );
 }

@@ -1,30 +1,33 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image, FlatList} from 'react-native';
+import {StyleSheet, Text, View, Pressable, FlatList} from 'react-native';
 import ListHeader from '../../components/ListHeader/ListHeader';
 import data from '../../../data/restaurants.json';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import {useNavigation} from '@react-navigation/native';
 const dishes = data[0].dishes;
 
 export default function Details() {
+  const navigation = useNavigation();
   return (
     <View style={styles.pageContainer}>
       <FlatList
         ListHeaderComponent={ListHeader}
         data={dishes}
         renderItem={({item}) => (
-          <View style={styles.menuItemContainer}>
+          <Pressable
+            style={styles.menuItemContainer}
+            onPress={() => navigation.navigate('MenuItem')}>
             <Text style={styles.itemName}>{item.name}</Text>
             <Text style={styles.itemIngredients}>{item.description}</Text>
             <Text style={styles.itemPrice}>$ {item.price}</Text>
-          </View>
+          </Pressable>
         )}
       />
-      <Icon
+      <Pressable
         style={styles.back}
-        name="arrow-circle-left"
-        size={30}
-        color="white"
-      />
+        onPress={() => navigation.navigate('Home')}>
+        <Icon name="arrow-circle-left" size={30} color="white" />
+      </Pressable>
     </View>
   );
 }

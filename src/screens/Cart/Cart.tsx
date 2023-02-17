@@ -8,7 +8,7 @@ const Cart = () => {
       style={{
         flex: 1,
         backgroundColor: 'white',
-        margin: 20,
+        padding: 20,
       }}>
       <Icon name="arrow-left" size={30} color="black" />
       <Text
@@ -122,29 +122,34 @@ const Cart = () => {
           $ 33.33
         </Text>
       </View>
-      <TouchableOpacity
+      <View
         style={{
-          backgroundColor: '#000',
-          position: 'absolute',
-          bottom: 10,
-          width: '100%',
-          margin: 'auto',
-          height: 60,
-          borderRadius: 10,
+          flex: 1,
           justifyContent: 'center',
-          flexDirection: 'row',
-          alignItems: 'center',
-          columnGap: 10,
         }}>
-        <Text
+        <TouchableOpacity
           style={{
-            color: 'white',
-            fontSize: 18,
+            backgroundColor: '#000',
+            position: 'absolute',
+            bottom: 10,
+            width: '100%',
+            height: 60,
+            borderRadius: 10,
+            justifyContent: 'center',
+            flexDirection: 'row',
+            alignItems: 'center',
+            columnGap: 10,
           }}>
-          Checkout
-        </Text>
-        <Icon name="shopping-cart" size={20} color="white" />
-      </TouchableOpacity>
+          <Text
+            style={{
+              color: 'white',
+              fontSize: 18,
+            }}>
+            Checkout
+          </Text>
+          <Icon name="shopping-cart" size={20} color="white" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };

@@ -43,10 +43,12 @@ const MenuItem = () => {
           <Btn name="minuscircleo" size={50} color="black" />
         </Pressable>
       </View>
-      <TouchableOpacity style={styles.addToCart}>
-        <Text style={styles.addToCartText}>Add to Cart</Text>
-        <Cart name="shopping-cart" size={25} color="white" />
-      </TouchableOpacity>
+      <View style={styles.cartContainer}>
+        <TouchableOpacity style={styles.addToCart}>
+          <Text style={styles.addToCartText}>Add to Cart</Text>
+          <Cart name="shopping-cart" size={25} color="white" />
+        </TouchableOpacity>
+      </View>
     </View>
   );
 };
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
   mainContainer: {
     flex: 1,
     backgroundColor: 'white',
-    margin: 20,
+    padding: 20,
   },
   backArrow: {
     marginBottom: 20,
@@ -71,6 +73,7 @@ const styles = StyleSheet.create({
     fontSize: 15,
     marginBottom: 5,
     lineHeight: 25,
+    color: 'black',
   },
   amountConatiner: {
     flexDirection: 'row',
@@ -85,6 +88,7 @@ const styles = StyleSheet.create({
     fontSize: 40,
     fontWeight: 'bold',
     marginHorizontal: 20,
+    color: 'black',
   },
   addToCart: {
     backgroundColor: '#000',
@@ -104,5 +108,9 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 20,
     fontWeight: 'bold',
+  },
+  cartContainer: {
+    flex: 1,
+    justifyContent: 'center',
   },
 });
